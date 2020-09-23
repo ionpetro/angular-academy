@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let item of movies" (click)="movieSelected.emit(item.title)" appMovieHighlighter>
+    {{ item.title }}
+  </li>
+</ul>

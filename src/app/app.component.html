@@ -1,5 +1,6 @@
-HELLO FROM HTML
+<input />
+<button type="button">search</button>
 
-<div class="red">KATI STO APP COMPONENT</div>
+<app-movies-list (movieSelected)="selectedMovieTitle = $event"></app-movies-list>
 
-<app-movies></app-movies>
+<app-movie-details [selectedMovieTitle]="selectedMovieTitle"></app-movie-details>
