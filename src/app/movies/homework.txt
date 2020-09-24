@@ -1,5 +1,0 @@
-build a movie-item component that will be a child of movies-list
-that will trigger an event on click and the movies-list will 
-catch that event and trigger another event for app-root
-
-component movies-search 

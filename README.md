@@ -1,27 +1,24 @@
-# AngularAcademy
+# Exercises
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.2.
+1. Create a movie-item component that will be a child of movies-list. It will trigger an event when the user clicks on a movie, and the movies-list will listen to that event and trigger another event for app-root.
 
-## Development server
+```html
+<app-root>
+  <app-movies-list>
+    <app-movie-item></app-movie-item>
+  </app-movies-list>
+  <app-movie-details></app-movie-details>
+</app-root>
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+2. Create an input above the movies-list in order to give the user the option to filter the movies based on their input. It is up to you to figure out how to implement this.
 
-## Code scaffolding
+```html
+<app-root>
+  <app-movies-search></app-movies-search>
+  <app-movies-list></app-movies-list>
+  <app-movie-details></app-movie-details>
+</app-root>
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+The purpose of these exercises is to make you familiar with the angular components as well as their inputs & outputs. Feel free to continue working on this project and add your own features you feel like!
