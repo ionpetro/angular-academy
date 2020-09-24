@@ -1,6 +1,6 @@
 # Exercises
 
-1. Create a movie-item component that will be a child of movies-list. It will trigger an event when the user clicks on a movie, and the movies-list will listen to that event and trigger another event for app-root.
+1. Create a movie-item component that will be a child of movies-list. It will trigger an event when the user clicks on a movie, and the movies-list will listen to that event and trigger another event for app-root to pass down to movie-details.
 
 ```html
 <app-root>
