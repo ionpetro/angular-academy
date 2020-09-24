@@ -11,6 +11,9 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 export class MovieHighlighterDirective {
   constructor(private elementReference: ElementRef) {}
 
+  // The HostListener is a listener that is put on the component / element
+  // that hosts the directive. In this project the host is the li element
+  // in movies-list
   @HostListener('mouseenter')
   addHighlight() {
     this.elementReference.nativeElement.style.color = 'blue';
