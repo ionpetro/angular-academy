@@ -1,24 +1,14 @@
 # Exercises
 
-1. Create a movie-item component that will be a child of movies-list. It will trigger an event when the user clicks on a movie, and the movies-list will listen to that event and trigger another event for app-root to pass down to movie-details.
+1. Create an observable that publishes Events
+   *Create a component with an input field
+   *Add the AfterViewInit lifecycle hook
+   *Create an Observable that publishes key down events
+   *Subscribe to it and when the user presses ESC button empty the input field
+   \*The keyboard code for Esc is “Escape”
 
-```html
-<app-root>
-  <app-movies-list>
-    <app-movie-item></app-movie-item>
-  </app-movies-list>
-  <app-movie-details></app-movie-details>
-</app-root>
-```
-
-2. Create an input above the movies-list in order to give the user the option to filter the movies based on their input. It is up to you to figure out how to implement this.
-
-```html
-<app-root>
-  <app-movies-search></app-movies-search>
-  <app-movies-list></app-movies-list>
-  <app-movie-details></app-movie-details>
-</app-root>
-```
-
-The purpose of these exercises is to make you familiar with the angular components as well as their inputs & outputs. Feel free to continue working on this project and add your own features you feel like!
+2. Create an input field using reactive forms technique.
+   *When the users starts typing and he types the third character propose a suggestion from a suggestion list.
+   *The list can be an array with some predefined words.
+   *When there is no suggestion just show the value.
+   *Please implement this with relative techniques to the reactive forms and the observables.
