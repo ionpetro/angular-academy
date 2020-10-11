@@ -1,14 +1,11 @@
 # Exercises
 
-1. Create an observable that publishes Events
-   ..*Create a component with an input field
-   ..*Add the AfterViewInit lifecycle hook
-   ..*Create an Observable that publishes key down events
-   ..*Subscribe to it and when the user presses ESC button empty the input field
-   ..\*The keyboard code for Esc is “Escape”
+1. Create An ACTORS LIST
+   ..*When clicking on a movie from the movies list, call the server to get the actors list.
+   ..*Create a caching interceptor that will check if data are already in cache and get them from there, or if there are not do the actual request.
+   ..*Use the same approach with the movies list example with the Module that creates fake entities instead of calling the server. For example create an entity that has actors list and id
+   ..*Show the list of actors under movies
 
-2. Create an input field using reactive forms technique.
-   ..*When the users starts typing and he types the third character propose a suggestion from a suggestion list.
-   ..*The list can be an array with some predefined words.
-   ..*When there is no suggestion just show the value.
-   ..*Please implement this with relative techniques to the reactive forms and the observables.
+2. Create A Registration FORM
+   ..*Create a registration form with name, lastname, username, password that on submit will send all the fields to the server.
+   ..*On Success you can hide the form and show a success message.
