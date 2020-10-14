@@ -1,5 +1,6 @@
-<article *ngIf="selectedMovieTitle">
+<article *ngIf="selectedMovie">
   <h2>Favourite movie:</h2>
 
-  {{ selectedMovieTitle }}
+  {{ selectedMovie.title }} <br>
+  {{ selectedMovie.dateReleased }}
 </article>

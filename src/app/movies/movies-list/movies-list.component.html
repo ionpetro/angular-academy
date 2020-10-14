@@ -3,17 +3,21 @@
   <label
     >Movie name:
     <input #movieName />
-  </label>
+  </label><br>
+  <label
+    >Date Released:
+    <input #movieDate type="date">
+  </label> &nbsp;
   <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(movieName.value); movieName.value = ''">add</button>
+  <button (click)="add(movieName.value, movieDate.value); movieName.value = ''">add</button>
   <ul class="movies">
     <li
       *ngFor="let movie of movies"
-      (click)="movieSelected.emit(movie.title)"
+      (click)="movieSelected.emit(movie)"
       appMovieHighlighter
     >
       <a (click)="edit(movie)">
-        <span class="badge">{{ movie.id || -1 }}</span>
+        <span class="badge">{{ movie.id }}</span>
         <span *ngIf="movie !== editMovie">{{ movie.title }}</span>
         <input
           *ngIf="movie === editMovie"

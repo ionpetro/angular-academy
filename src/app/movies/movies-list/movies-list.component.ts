@@ -34,7 +34,7 @@ export class MoviesListComponent implements OnInit, OnChanges {
       .subscribe((movies) => (this.movies = movies));
   }
 
-  add(title: string): void {
+  add(title: string, date: string): void {
     this.editMovie = undefined;
     title = title.trim();
     if (!title) {
@@ -42,7 +42,9 @@ export class MoviesListComponent implements OnInit, OnChanges {
     }
 
     // The server will generate the id for this new movie
-    const newMovie: Movie = { title } as Movie;
+    const newMovie: Movie = { 
+      'title': title,
+      'dateReleased': date } as Movie;
     this.moviesService
       .addMovie(newMovie)
       .subscribe((movie) => this.movies.push(movie));

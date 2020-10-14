@@ -1,0 +1,2 @@
+<input #searchInput (keyup)="getInputValue(searchInput.value)" />
+<button (click)="getInputValue(searchInput.value); searchInput.value = ''">Search</button>

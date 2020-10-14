@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Movie } from '../movie';
 
 @Component({
   selector: 'app-movie-details',
@@ -7,7 +8,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 })
 export class MovieDetailsComponent implements OnInit {
   @Input()
-  selectedMovieTitle: string = '';
+  selectedMovie: Movie;
 
   constructor() {}
 

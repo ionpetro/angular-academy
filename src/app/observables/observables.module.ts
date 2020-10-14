@@ -11,6 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ObservablesRoutingModule } from './observables-routing.module';
 import { ObservablesTimerComponent } from './observables-timer/observables-timer.component';
 import { ObservablesStarterComponent } from './observables-starter/observables-starter.component';
+import { ObservablesInputComponent } from './observables-input/observables-input.component';
+import { ObservablesRecommendationComponent } from './observables-recommendation/observables-recommendation.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { ObservablesStarterComponent } from './observables-starter/observables-s
     ObservablesFormComponent,
     ObservablesTimerComponent,
     ObservablesStarterComponent,
+    ObservablesInputComponent,
+    ObservablesRecommendationComponent,
   ],
   providers: [ObservablesService],
   imports: [

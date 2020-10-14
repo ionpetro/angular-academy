@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { RegistrationComponent } from './auth/registration/registration.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,9 @@ const routes: Routes = [
         (m) => m.ObservablesModule
       ),
   },
+  {
+    path: 'registration', component: RegistrationComponent
+  }
 ];
 
 @NgModule({

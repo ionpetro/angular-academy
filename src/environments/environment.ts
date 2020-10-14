@@ -6,7 +6,11 @@ export const environment = {
   production: false,
   config: {
     api: {
-      url: `api/movies`,
+      url: {
+        movies: `api/movies`,
+        actors: `api/actors`,
+        users: `api/users`,
+      },
     },
     omdbapi: {
       baseUrl: 'http://www.omdbapi.com/',

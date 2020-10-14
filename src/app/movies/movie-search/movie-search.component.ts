@@ -22,7 +22,7 @@ export class MovieSearchComponent implements OnInit {
 
   ngOnInit() {
     this.movies$ = this.searchText$.pipe(
-      debounceTime(500),
+      debounceTime(100),
       distinctUntilChanged(),
       switchMap((movieName) => this.movieService.searchMovieDetails(movieName))
     );

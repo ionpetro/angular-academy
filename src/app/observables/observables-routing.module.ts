@@ -8,6 +8,8 @@ import { ObservablesDataExchangeAComponent } from './observables-data-exchange-a
 import { ObservablesDataExchangeBComponent } from './observables-data-exchange-b/observables-data-exchange-b.component';
 import { ObservablesFormComponent } from './observables-form/observables-form.component';
 import { ObservablesStarterComponent } from './observables-starter/observables-starter.component';
+import { ObservablesInputComponent } from './observables-input/observables-input.component';
+import { ObservablesRecommendationComponent } from './observables-recommendation/observables-recommendation.component';
 
 const routes: Routes = [
   {
@@ -29,6 +31,13 @@ const routes: Routes = [
       {
         path: 'observables/forms',
         component: ObservablesFormComponent,
+      },
+      { path: 'observables/input',
+        component: ObservablesInputComponent,
+      },
+      {
+        path: 'observables/recommendation',
+        component: ObservablesRecommendationComponent,
       },
     ],
   },

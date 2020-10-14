@@ -13,6 +13,8 @@ import { DownloadMoviesListComponent } from './download-movies-list/download-mov
 import { FormsModule } from '@angular/forms';
 import { LoggingInterceptor } from './interceptors/logging-interceptor';
 import { MovieSearchComponent } from './movie-search/movie-search.component';
+import { MovieActorsComponent } from './movie-actors/movie-actors.component';
+import { CacheInterceptor } from './interceptors/cache-interceptor';
 
 @NgModule({
   declarations: [
@@ -22,10 +24,12 @@ import { MovieSearchComponent } from './movie-search/movie-search.component';
     MoviesComponent,
     DownloadMoviesListComponent,
     MovieSearchComponent,
+    MovieActorsComponent,
   ],
   providers: [
     MoviesService,
     { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true }
   ],
   imports: [
     CommonModule,

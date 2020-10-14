@@ -8,6 +8,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, retry, tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { Actors } from './actors';
 import { Movie } from './movie';
 import { MovieDetails } from './movie-details';
 
@@ -16,7 +17,8 @@ import { MovieDetails } from './movie-details';
 })
 export class MoviesService {
   //  private handleError: HandleError;
-  moviesUrl = environment.config.api.url;
+  moviesUrl = environment.config.api.url.movies;
+  actorsUrl = environment.config.api.url.actors;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -31,6 +33,13 @@ export class MoviesService {
     return this.http.get<Movie[]>(this.moviesUrl).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
+    );
+  }
+
+  getActor(id: number): Observable<Actors> {
+    const url = `${this.actorsUrl}/${id}`
+    return this.http.get<Actors>(url).pipe(
+      catchError(this.handleError)
     );
   }
 
@@ -78,7 +87,7 @@ export class MoviesService {
 
     const options = this.createHttpOptions(movieName);
 
-    return this.http.get(`${environment.config.omdbapi.baseUrl}`, options).pipe(
+    return this.http.get<Observable<MovieDetails[]>>(`${environment.config.omdbapi.baseUrl}`, options).pipe(
       map((data: any) => {
         return data.Search.map(
           (entry: any) =>
@@ -114,7 +123,7 @@ export class MoviesService {
     // omdb free search api
     // e.g., http://www.omdbapi.com/?s=Titanic&apikey=8ad96311'
     const params = new HttpParams({
-      fromObject: { s: movieName, apikey: environment.config.omdbapi.apiKey },
+      fromObject : {s: movieName, apikey: environment.config.omdbapi.apiKey}
     });
     return { params };
   }

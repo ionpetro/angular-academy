@@ -1,5 +1,6 @@
 <h1>Movies DEMO</h1>
-<app-movies-list></app-movies-list>
-<app-movie-details></app-movie-details>
+<app-movies-list (movieSelected)="movie = $event"></app-movies-list>
+<app-movie-actors [selectedMovie]="movie"></app-movie-actors>
+<app-movie-details [selectedMovie]="movie"></app-movie-details>
 <app-download-movies-list></app-download-movies-list>
 <app-movie-search></app-movie-search>

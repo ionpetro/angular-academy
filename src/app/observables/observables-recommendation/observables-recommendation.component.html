@@ -1,0 +1,12 @@
+<p>observables-recommendation works!</p>
+
+<form [formGroup]="recommendationForm">
+    <input type="text" formControlName="input">
+    <div>
+        <ul>
+            <li *ngFor="let suggestion of suggestions">
+                {{suggestion}}    
+            </li>
+        </ul>
+    </div>
+</form>
