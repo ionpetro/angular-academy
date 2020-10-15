@@ -10,6 +10,12 @@ import { UsersService } from '../users.service';
 })
 export class RegistrationComponent implements OnInit {
 
+  lastId: number = 0;
+
+  getUniqueId():number {
+    return this.lastId++;
+  }
+
   profileForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
@@ -24,12 +30,14 @@ export class RegistrationComponent implements OnInit {
 
   onSubmit() {
     const newUser: User = {
+      id: this.getUniqueId(),
       firstname: this.profileForm.get('firstName').value,
       lastname: this.profileForm.get('lastName').value,
       username: this.profileForm.get('username').value,
       password: this.profileForm.get('password').value
     } as User;
-    this.usersService.addUser(newUser).subscribe();
+
+    let subscription = this.usersService.addUser(newUser).subscribe();
     this.usersService.getUsers().subscribe(
       x => console.log(x)
     );

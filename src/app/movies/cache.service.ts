@@ -26,7 +26,6 @@ export class CacheService {
 
   put(req: HttpRequest<any>, res: HttpResponse<any>) {
     this.cache.set(req.urlWithParams, res)
-    console.log(this.cache);
   }
 
 }

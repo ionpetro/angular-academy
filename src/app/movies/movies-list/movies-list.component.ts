@@ -48,6 +48,8 @@ export class MoviesListComponent implements OnInit, OnChanges {
     this.moviesService
       .addMovie(newMovie)
       .subscribe((movie) => this.movies.push(movie));
+
+    console.log(this.movies);
   }
 
   delete(movie: Movie): void {

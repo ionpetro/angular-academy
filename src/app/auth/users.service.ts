@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { User } from './users';
 
@@ -22,6 +22,7 @@ export class UsersService {
 
   addUser(user: User): Observable<User> {
     return this.http.post<User>(this.usersUrl, user, this.httpOptions).pipe(
+      tap(x => console.log('here', x)),
       catchError(this.handleError)
     );
   }

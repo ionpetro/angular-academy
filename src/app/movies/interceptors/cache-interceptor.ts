@@ -17,10 +17,17 @@ export class CacheInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
 
+    // this interceptor should work only for GET requests on actors
+    if (!this.isCacheable(req)) {return next.handle(req)}
+
     const cachedResponse = this.cacheService.get(req);
     return cachedResponse ?
       of(cachedResponse) : this.sendRequest(req, next);
 
+  }
+
+  isCacheable(req: HttpRequest<any>) {
+    return req.url.startsWith('api/actors')
   }
 
   sendRequest(
