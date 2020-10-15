@@ -26,20 +26,25 @@ export class MovieActorsComponent implements OnInit, OnChanges {
     let cacheResult: Actors;
     //check if cache has the element
     if(this.selectedMovie) {
-      cacheResult = this.cacheService.findItem(this.selectedMovie.id);
+      // cacheResult = this.cacheService.findItem(this.selectedMovie.id);
 
-      // if cache has element, retrieve the element from cache
-      if (cacheResult) {
-        this.actors = cacheResult;
+      // // if cache has element, retrieve the element from cache
+      // if (cacheResult) {
+      //   this.actors = cacheResult;
 
-      // else create the request
-      } else {
-        this.moviesService
-          .getActor(this.selectedMovie.id)
-          .subscribe((actors) => {
-            this.actors = actors
-            this.cacheService.addToCache(actors)})
-      } 
+      // // else create the request
+      // } else {
+      //   this.moviesService
+      //     .getActor(this.selectedMovie.id)
+      //     .subscribe((actors) => {
+      //       this.actors = actors
+      //       this.cacheService.addToCache(actors)})
+      // } 
+
+      this.moviesService.getActor(this.selectedMovie.id)
+        .subscribe((actors) => {
+          this.actors = actors;
+        });
     }
   }
 }
