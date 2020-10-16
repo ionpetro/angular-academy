@@ -13,7 +13,7 @@ export class HomeComponent {
 
     ngOnInit() {
         this.loading = true;
-        this.userService.getAll().pipe(first()).subscribe(users => {
+        this.userService.getAll().subscribe(users => {
             this.loading = false;
             this.users = users;
         });

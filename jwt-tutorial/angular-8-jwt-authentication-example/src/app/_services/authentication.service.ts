@@ -1,7 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
@@ -28,6 +28,13 @@ export class AuthenticationService {
                 this.currentUserSubject.next(user);
                 return user;
             }));
+    }
+
+    register(firstName: string, lastName: string, username: string, password: string) {
+        return this.http.post<any>(`${environment.apiUrl}/users`, { firstName, lastName, username, password })
+            .pipe(
+                tap(x => x)
+            )
     }
 
     logout() {

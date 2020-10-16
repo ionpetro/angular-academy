@@ -16,7 +16,7 @@ import { EncodingTools } from "./EncodingTools";
 
 const users: User[] = [
   {
-    id: 1,
+    id: 0,
     username: "test",
     password: "test",
     firstName: "Test",
@@ -33,6 +33,7 @@ const users: User[] = [
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
+  userId = 0;
   constructor(private authenticationService: AuthenticationService) {}
 
   // route functions
@@ -56,6 +57,14 @@ export class FakeBackendInterceptor implements HttpInterceptor {
   getUsers(request) {
     if (!this.isLoggedIn(request)) return this.unauthorized();
     return this.ok(users);
+  }
+
+  addUser(request) {
+    request.body.id = this.userId;
+    users.push(request.body)
+    this.userId++;
+    console.log('users' , users)
+    return this.ok(request);
   }
 
   // helper functions
@@ -94,6 +103,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         return this.authenticate(request);
       case url.endsWith("/users") && method === "GET":
         return this.getUsers(request);
+      case url.endsWith("/users") && method === "POST":
+        return this.addUser(request);
       default:
         // pass through any requests not handled above
         return next.handle(request);
