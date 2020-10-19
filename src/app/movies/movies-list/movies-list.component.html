@@ -1,1 +1,6 @@
-<p (click)="deleteMovie()">Movie title</p>
+<p>Movie title</p>
+<ul>
+<li *ngFor="let item of items">
+    <span (click)="deleteMovie(item)" >{{item.title}}</span>
+</li>
+</ul>

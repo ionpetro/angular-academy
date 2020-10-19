@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Movie } from '../models/movie';
 import { deleteMovie } from '../store/movies.actions';
 
 @Component({
@@ -8,12 +10,27 @@ import { deleteMovie } from '../store/movies.actions';
   styleUrls: ['./movies-list.component.css'],
 })
 export class MoviesListComponent implements OnInit {
-  constructor(private store: Store) {}
+  movies$: Observable<any>;
+  items = [];
 
-  ngOnInit(): void {}
+  constructor(private store: Store<{movies: Array<Object>}>) {
+    // initialize the list
+    this.movies$ = store.select('movies');
+    this.movies$.subscribe(data => this.items = data.items);
+  }
 
-  deleteMovie() {
-    const deleteMovieObj = deleteMovie();
+
+  ngOnInit(): void {
+  }
+
+  deleteMovie(movie: Movie) {
+    // console.log(movie.title);
+    const deleteMovieObj = deleteMovie({title: movie.title});
     this.store.dispatch(deleteMovieObj);
+
+    this.movies$ = this.store.select('movies');
+    this.movies$.subscribe(data => this.items = data.items);
+
+    // console.log(this.items)
   }
 }

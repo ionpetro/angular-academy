@@ -1,3 +1,6 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 
-export const deleteMovie = createAction('[Movies] Delete');
+export const deleteMovie = createAction(
+    '[Movies] Delete',
+    props<{title: string}>()
+    );
