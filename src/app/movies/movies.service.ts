@@ -29,7 +29,7 @@ export class MoviesService {
   }
 
   addMovie(movie: Movie) {
-    const newData = [...this.data, movie]
-    return of(newData);
+    this.data = [...this.data, movie];
+    return of(this.data);
   }
 }

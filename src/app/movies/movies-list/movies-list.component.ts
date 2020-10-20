@@ -16,7 +16,7 @@ import { moviesSelector } from '../store/movies.selectors';
   styleUrls: ['./movies-list.component.css'],
 })
 export class MoviesListComponent implements OnInit {
-  searchTerm = '';
+  searchTerm: string = '';
   title: string = '';
   movies$: Observable<Movie[]>;
 

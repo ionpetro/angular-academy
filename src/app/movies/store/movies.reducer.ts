@@ -7,7 +7,7 @@ export interface State {
 }
 
 const initState: State = {
-  items: [],
+  items: []
 };
 
 export const moviesReducer = createReducer(
@@ -21,7 +21,7 @@ export const moviesReducer = createReducer(
   }),
 
   on(addMovie, (state, newMovieAction) => {
-    console.log(newMovieAction)
+    // console.log(newMovieAction)
     return {
       ...state,
       items: [...state.items, newMovieAction.newMovie]
