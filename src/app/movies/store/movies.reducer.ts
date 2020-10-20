@@ -1,5 +1,14 @@
 import { createReducer, on } from '@ngrx/store';
+import { Movie } from '../models/movie';
 import { deleteMovie } from './movies.actions';
+
+export interface AppState {
+  movies: MoviesState;
+}
+
+export interface MoviesState {
+  items: Array<Movie>;
+}
 
 const initState = {
   items: [
@@ -11,10 +20,6 @@ const initState = {
 export const moviesReducer = createReducer(
   initState,
   on(deleteMovie, (state, {title}) => {
-    // The items property was missing below that's why we were getting an error
-    // return {
-    //   items: state.items.map(() => ({ title: 'new caris' })),
-    // };
     return {
       items: state.items.filter(data => data.title != title)
     }

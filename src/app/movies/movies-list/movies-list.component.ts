@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Movie } from '../models/movie';
 import { deleteMovie } from '../store/movies.actions';
+import { selectMovieItems } from '../store/movies.selector';
 
 @Component({
   selector: 'app-movies-list',
@@ -10,13 +11,11 @@ import { deleteMovie } from '../store/movies.actions';
   styleUrls: ['./movies-list.component.css'],
 })
 export class MoviesListComponent implements OnInit {
-  movies$: Observable<any>;
-  items = [];
+  movies$: Observable<Movie[]>;
 
-  constructor(private store: Store<{movies: Array<Object>}>) {
+  constructor(private store: Store) {
     // initialize the list
-    this.movies$ = store.select('movies');
-    this.movies$.subscribe(data => this.items = data.items);
+    this.movies$ = store.select(selectMovieItems);
   }
 
 
@@ -24,13 +23,8 @@ export class MoviesListComponent implements OnInit {
   }
 
   deleteMovie(movie: Movie) {
-    // console.log(movie.title);
     const deleteMovieObj = deleteMovie({title: movie.title});
     this.store.dispatch(deleteMovieObj);
-
-    this.movies$ = this.store.select('movies');
-    this.movies$.subscribe(data => this.items = data.items);
-
-    // console.log(this.items)
+    this.movies$ = this.store.select(selectMovieItems);
   }
 }

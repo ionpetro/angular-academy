@@ -1,6 +1,6 @@
 <p>Movie title</p>
 <ul>
-<li *ngFor="let item of items">
-    <span (click)="deleteMovie(item)" >{{item.title}}</span>
+<li *ngFor="let movie of movies$ | async">
+    <span (click)="deleteMovie(movie)" >{{movie.title}}</span>
 </li>
 </ul>
