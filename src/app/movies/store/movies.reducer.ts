@@ -1,15 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
 import { Movie } from '../movie';
-import { deleteMovie, fetchMoviesSuccess } from './movies.actions';
+import { addMovie, deleteMovie, fetchMoviesSuccess } from './movies.actions';
 
 export interface State {
   items: Movie[];
-  x: number;
 }
 
 const initState: State = {
   items: [],
-  x: 1,
 };
 
 export const moviesReducer = createReducer(
@@ -19,6 +17,14 @@ export const moviesReducer = createReducer(
     return {
       ...state,
       items: movies,
+    };
+  }),
+
+  on(addMovie, (state, newMovieAction) => {
+    console.log(newMovieAction)
+    return {
+      ...state,
+      items: [...state.items, newMovieAction.newMovie]
     };
   }),
 

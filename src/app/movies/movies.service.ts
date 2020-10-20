@@ -27,4 +27,9 @@ export class MoviesService {
 
     return of(filteredMovies);
   }
+
+  addMovie(movie: Movie) {
+    const newData = [...this.data, movie]
+    return of(newData);
+  }
 }

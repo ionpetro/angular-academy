@@ -8,12 +8,18 @@ export const fetchMoviesSuccess = createAction(
 );
 export const fetchMoviesError = createAction('[Movies] fetch error');
 
+
 export const deleteMovie = createAction(
   '[Movies] Delete',
   props<{ movieTitle: string }>()
-);
-
+  );
+  
 export const searchMovies = createAction(
   '[Movies] search movies',
   props<{ title: string }>()
+  );
+    
+export const addMovie = createAction(
+  '[Movies] Add',
+  props<{newMovie: Movie}>()
 );

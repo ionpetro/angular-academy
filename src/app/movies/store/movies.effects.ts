@@ -4,6 +4,7 @@ import { EMPTY, Observable, of } from 'rxjs';
 import { map, mergeMap, catchError, switchMap } from 'rxjs/operators';
 import { MoviesService } from '../movies.service';
 import {
+  addMovie,
   fetchMovies,
   fetchMoviesError,
   fetchMoviesSuccess,
@@ -23,6 +24,20 @@ export class MovieEffects {
       )
     )
   );
+
+  addMovies$ = createEffect(() => 
+    this.actions$.pipe(
+      ofType(addMovie),
+      switchMap(( {newMovie} ) => 
+        this.moviesService
+          .addMovie( newMovie )
+          .pipe(
+            map((movies) => fetchMoviesSuccess({ movies })),
+            catchError(()=> of(fetchMoviesError()))
+          )
+        )
+      )
+    );
 
   searchMovies$ = createEffect(() =>
     this.actions$.pipe(

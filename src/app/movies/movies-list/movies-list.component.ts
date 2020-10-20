@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Movie } from '../movie';
 import {
+  addMovie,
   deleteMovie,
   fetchMovies,
   searchMovies,
@@ -16,6 +17,7 @@ import { moviesSelector } from '../store/movies.selectors';
 })
 export class MoviesListComponent implements OnInit {
   searchTerm = '';
+  title: string = '';
   movies$: Observable<Movie[]>;
 
   constructor(private store: Store) {}
@@ -32,5 +34,10 @@ export class MoviesListComponent implements OnInit {
 
   searchMovies(searchTerm: string) {
     this.store.dispatch(searchMovies({ title: searchTerm }));
+  }
+
+  addMovie(title: string) {
+    const newMovie: Movie = {title: title}; 
+    this.store.dispatch(addMovie({newMovie}));
   }
 }
