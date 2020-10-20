@@ -28,7 +28,8 @@ export class MoviesListComponent implements OnInit {
   }
 
   deleteMovie(movieTitle: string) {
-    const deleteMovieObj = deleteMovie({ movieTitle });
+    const deletedMovie: Movie = {title: movieTitle};
+    const deleteMovieObj = deleteMovie({ deletedMovie });
     this.store.dispatch(deleteMovieObj);
   }
 

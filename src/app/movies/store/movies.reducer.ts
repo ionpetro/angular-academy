@@ -20,27 +20,20 @@ export const moviesReducer = createReducer(
     };
   }),
 
-  on(addMovie, (state, newMovieAction) => {
-    // console.log(newMovieAction)
-    return {
-      ...state,
-      items: [...state.items, newMovieAction.newMovie]
-    };
-  }),
+  // on(addMovie, (state, {newMovie}) => {
+  //   // console.log(newMovieAction)
+  //   return {
+  //     ...state,
+  //     items: [...state.items, newMovie]
+  //   };
+  // }),
 
-  on(deleteMovie, (state, { movieTitle }) => {
-    return {
-      ...state,
-      items: state.items.map((item) => {
-        if (item.title === movieTitle) {
-          return {
-            ...item,
-            deleted: true,
-          };
-        }
-
-        return item;
-      }),
-    };
-  })
+  // on(deleteMovie, (state, deletedMovieAction) => {
+  //   return {
+  //     ...state,
+  //     items: state.items.filter((item) => {
+  //       item !== deletedMovieAction.deletedMovie
+  //     }),
+  //   };
+  // })
 );

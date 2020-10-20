@@ -5,6 +5,7 @@ import { map, mergeMap, catchError, switchMap } from 'rxjs/operators';
 import { MoviesService } from '../movies.service';
 import {
   addMovie,
+  deleteMovie,
   fetchMovies,
   fetchMoviesError,
   fetchMoviesSuccess,
@@ -31,6 +32,20 @@ export class MovieEffects {
       switchMap(( {newMovie} ) => 
         this.moviesService
           .addMovie( newMovie )
+          .pipe(
+            map((movies) => fetchMoviesSuccess({ movies })),
+            catchError(()=> of(fetchMoviesError()))
+          )
+        )
+      )
+    );
+
+    deleteMovies$ = createEffect(() => 
+    this.actions$.pipe(
+      ofType(deleteMovie),
+      switchMap(({deletedMovie}) => 
+        this.moviesService
+          .deleteMovie( deletedMovie )
           .pipe(
             map((movies) => fetchMoviesSuccess({ movies })),
             catchError(()=> of(fetchMoviesError()))

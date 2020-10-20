@@ -11,7 +11,7 @@ export const fetchMoviesError = createAction('[Movies] fetch error');
 
 export const deleteMovie = createAction(
   '[Movies] Delete',
-  props<{ movieTitle: string }>()
+  props<{ deletedMovie: Movie }>()
   );
   
 export const searchMovies = createAction(
