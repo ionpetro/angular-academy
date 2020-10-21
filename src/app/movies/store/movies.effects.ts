@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { EMPTY, Observable, of } from 'rxjs';
-import { map, mergeMap, catchError, switchMap } from 'rxjs/operators';
-import { MoviesService } from '../movies.service';
+import { Injectable } from "@angular/core";
+import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { EMPTY, Observable, of } from "rxjs";
+import { map, mergeMap, catchError, switchMap } from "rxjs/operators";
+import { MoviesService } from "../movies.service";
 import {
   addMovie,
   deleteMovie,
@@ -10,7 +10,7 @@ import {
   fetchMoviesError,
   fetchMoviesSuccess,
   searchMovies,
-} from './movies.actions';
+} from "./movies.actions";
 
 @Injectable()
 export class MovieEffects {
@@ -26,33 +26,29 @@ export class MovieEffects {
     )
   );
 
-  addMovies$ = createEffect(() => 
+  addMovies$ = createEffect(() =>
     this.actions$.pipe(
       ofType(addMovie),
-      switchMap(( {newMovie} ) => 
-        this.moviesService
-          .addMovie( newMovie )
-          .pipe(
-            map((movies) => fetchMoviesSuccess({ movies })),
-            catchError(()=> of(fetchMoviesError()))
-          )
+      switchMap(({ newMovie }) =>
+        this.moviesService.addMovie(newMovie).pipe(
+          map((movies) => fetchMoviesSuccess({ movies })),
+          catchError(() => of(fetchMoviesError()))
         )
       )
-    );
+    )
+  );
 
-    deleteMovies$ = createEffect(() => 
+  deleteMovies$ = createEffect(() =>
     this.actions$.pipe(
       ofType(deleteMovie),
-      switchMap(({deletedMovie}) => 
-        this.moviesService
-          .deleteMovie( deletedMovie )
-          .pipe(
-            map((movies) => fetchMoviesSuccess({ movies })),
-            catchError(()=> of(fetchMoviesError()))
-          )
+      switchMap(({ deletedMovie }) =>
+        this.moviesService.deleteMovie(deletedMovie).pipe(
+          map((movies) => fetchMoviesSuccess({ movies })),
+          catchError(() => of(fetchMoviesError()))
         )
       )
-    );
+    )
+  );
 
   searchMovies$ = createEffect(() =>
     this.actions$.pipe(

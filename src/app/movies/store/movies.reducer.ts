@@ -16,9 +16,9 @@ export const moviesReducer = createReducer(
     // The items property was missing below that's why we were getting an error
     return {
       ...state,
-      items: movies,
+      items: movies
     };
-  }),
+  })
 
   // on(addMovie, (state, {newMovie}) => {
   //   // console.log(newMovieAction)
